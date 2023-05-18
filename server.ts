@@ -6,7 +6,8 @@ import cors from 'cors';
 import path from 'path';
 
 
-console.log(__dirname);
+
+const newPath = process.argv[1].substring(0,process.argv[1].lastIndexOf('server')-1)
 
 
 
@@ -24,10 +25,10 @@ app.use(express.urlencoded({extended:false}))
 app.use('/api',apiRouter)
 app.use('/user',userRouter)
 
-app.use(express.static(path.join(__dirname, "demoapp","build")));
+app.use(express.static(path.join(newPath, "demoapp","build")));
     app.get("*", function (_, res) {
       res.sendFile(
-        path.join(__dirname, "demoapp","build","index.html"),
+        path.join(newPath, "demoapp","build","index.html"),
         function (err) {
           res.status(500).send(err);
         }
