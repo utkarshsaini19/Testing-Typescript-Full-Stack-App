@@ -7,9 +7,6 @@ import path from 'path';
 
 
 
-const newPath = process.argv[1].substring(0,process.argv[1].lastIndexOf('server')-1)
-
-
 
 
 
@@ -25,15 +22,6 @@ app.use(express.urlencoded({extended:false}))
 app.use('/api',apiRouter)
 app.use('/user',userRouter)
 
-app.use(express.static(path.join(newPath, "demoapp","build")));
-    app.get("*", function (_, res) {
-      res.sendFile(
-        path.join(newPath, "demoapp","build","index.html"),
-        function (err) {
-          res.status(500).send(err);
-        }
-      );
-    });
 
 app.listen(PORT,()=>{
     console.log("Server is running on PORT :",PORT);
