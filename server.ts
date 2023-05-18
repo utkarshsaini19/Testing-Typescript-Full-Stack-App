@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, "./demoapp/build")));
       );
     });
 
-app.listen(PORT,'127.0.0.1',()=>{
+app.listen(PORT,()=>{
     console.log("Server is running on PORT :",PORT);
     
 })
